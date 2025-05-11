@@ -166,9 +166,9 @@ def main():
     # 将分析结果写入Excel文件
     from openpyxl import load_workbook
     wb = load_workbook(EXCEL_FILE)
-    if '按人' in wb.sheetnames:
+    if '周按人' in wb.sheetnames:
         # 如果sheet已存在,删除旧sheet
-        wb.remove(wb['按人'])
+        wb.remove(wb['周按人'])
     wb.save(EXCEL_FILE)
 
     with pd.ExcelWriter(EXCEL_FILE, mode='a', engine='openpyxl') as writer:
