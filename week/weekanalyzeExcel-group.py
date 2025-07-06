@@ -26,7 +26,7 @@ def parse_args():
                       help='开始日期 (YYYY-MM-DD)')
     parser.add_argument('--end_date', type=str, default=end_date,
                       help='结束日期 (YYYY-MM-DD)') 
-    parser.add_argument('--excel_file', type=str, default='file/0509/0509V8客户问题上报 - 分析.xlsx',
+    parser.add_argument('--excel_file', type=str, default='file/0704/0704V8客户问题上报 - 分析.xlsx',
                       help='Excel文件路径')
     return parser.parse_args()
 
@@ -72,7 +72,7 @@ def main():
     # 4. 统计每个组的开发超期量（按解决时间）
     overdue_by_group = df[
         (solve_time_mask) & (df['开发是否超期'] == '是')
-    ]['开发处理-开发所属部门'].value_counts()
+    ].apply(lambda x: x['超期责任人所属部门'] if pd.notna(x['超期责任人所属部门']) else x['开发处理-开发所属部门'], axis=1).value_counts()
 
     # 5. 统计每个组的有效问题处理时长（按解决时间）
     valid_issues = df[(solve_time_mask) & (df['有效问题'] == '是')]
@@ -167,9 +167,9 @@ def main():
     # 将分析结果写入Excel文件
     from openpyxl import load_workbook
     wb = load_workbook(EXCEL_FILE)
-    if '分析结果(按组)' in wb.sheetnames:
+    if '周分析结果(按部门)' in wb.sheetnames:
         # 如果sheet已存在,删除旧sheet
-        wb.remove(wb['分析结果(按部门)'])
+        wb.remove(wb['周分析结果(按部门)'])
     wb.save(EXCEL_FILE)
 
     with pd.ExcelWriter(EXCEL_FILE, mode='a', engine='openpyxl') as writer:

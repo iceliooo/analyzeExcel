@@ -25,7 +25,7 @@ def parse_args():
                       help='开始日期 (YYYY-MM-DD)')
     parser.add_argument('--end_date', type=str, default=end_date,
                       help='结束日期 (YYYY-MM-DD)') 
-    parser.add_argument('--excel_file', type=str, default='file/0509/0509V8客户问题上报 - 分析.xlsx',
+    parser.add_argument('--excel_file', type=str, default='file/0704/0704V8客户问题上报 - 分析.xlsx',
                       help='Excel文件路径')
     return parser.parse_args()
 
@@ -71,7 +71,7 @@ def main():
     # 4. 统计每个开发人员的开发超期量（按解决时间）
     overdue_by_developer = df[
         (solve_time_mask) & (df['开发是否超期'] == '是')
-    ]['开发处理_开发人员'].value_counts()
+    ].apply(lambda x: x['开发处理-超期责任人'] if pd.notna(x['开发处理-超期责任人']) else x['开发处理_开发人员'], axis=1).value_counts()
 
     # 5. 统计每个开发人员的有效问题处理时长（按解决时间）
     valid_issues = df[(solve_time_mask) & (df['有效问题'] == '是')]

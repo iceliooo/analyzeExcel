@@ -6,16 +6,25 @@ from openpyxl.utils import get_column_letter
 # 设置Excel文件路径
 # EXCEL_FILE = 'file/客户问题上报 - 中文.xlsx'
 # EXCEL_FILE = 'file/0330V8客户问题上报-分析.xlsx'
-# EXCEL_FILE = 'file/0330V8-3.12客户问题上报-分析.xlsx'
+# EXCEL_FILE = 'file/0330V8-3.12客户问题上报-分析
 # EXCEL_FILE = 'file/0404V8客户问题上报 - 分析.xlsx'
 # EXCEL_FILE = 'file/0418/0418V8客户问题上报 - 分析.xlsx'
 # EXCEL_FILE = 'file/0425/0425V8客户问题上报 - 分析.xlsx'
 # EXCEL_FILE = 'file/0430/0430V8客户问题上报 - 分析.xlsx'
-EXCEL_FILE = 'file/0509/0509V8客户问题上报 - 分析.xlsx'
+# EXCEL_FILE = 'file/0509/0509V8客户问题上报 - 分析.xlsx' EXCEL_FILE = 'file/0516/0516V/8客户问题上报 - 分析.xlsx'
+# EXCEL_FILE = 'file/0627/0627V8客户问题上报 - 分析.xlsx'
+EXCEL_FILE = 'file/0704/0704V8客户问题上报 - 分析.xlsx' 
 
 # EXCEL_FILE = 'file/V3.15/V3.15V8客户问题上报-分析V2.xlsx'
 # EXCEL_FILE = 'file/V3.15/V3.15V8客户问题上报 (0426).xlsx'
 # EXCEL_FILE = 'file/V3.15/V3.15V8客户问题上报 (0430).xlsx'
+# EXCEL_FILE = 'file/V3.15/V3.15V8客户问题上报 (0511).xlsx'
+# EXCEL_FILE = 'file/V3.15/V3.15V8客户问题上报 (0518).xlsx'
+# EXCEL_FILE = 'file/V3.18/V3.18V8客户问题上报 (0629).xlsx'
+
+# EXCEL_FILE = 'file/V5.0/V5.0V8客户问题上报 (0629).xlsx'
+
+
 
 # 读取Excel文件
 df = pd.read_excel(EXCEL_FILE)

@@ -25,7 +25,7 @@ def parse_args():
                       help='开始日期 (YYYY-MM-DD)')
     parser.add_argument('--end_date', type=str, default=end_date,
                       help='结束日期 (YYYY-MM-DD)') 
-    parser.add_argument('--excel_file', type=str, default='file/0509/0509V8客户问题上报 - 分析.xlsx',
+    parser.add_argument('--excel_file', type=str, default='file/0704/0704V8客户问题上报 - 分析.xlsx',
                       help='Excel文件路径')
     return parser.parse_args()
 

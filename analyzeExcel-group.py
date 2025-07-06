@@ -17,15 +17,24 @@ from openpyxl.utils import get_column_letter
 # EXCEL_FILE = 'file/0418/0418V8客户问题上报 - 分析.xlsx'
 # EXCEL_FILE = 'file/0425/0425V8客户问题上报 - 分析.xlsx'
 # EXCEL_FILE = 'file/0430/0430V8客户问题上报 - 分析.xlsx'
-EXCEL_FILE = 'file/0509/0509V8客户问题上报 - 分析.xlsx'
+# EXCEL_FILE = 'file/0509/0509V8客户问题上报 - 分析.xlsx'
+# EXCEL_FILE = 'file/0516/0516V8客户问题上报 - 分析.xlsx'
+# EXCEL_FILE = 'file/0523/0523V8客户问题上报 - 分析.xlsx'
+# EXCEL_FILE = 'file/0613/0613V8客户问题上报 - 分析.xlsx'
+# EXCEL_FILE = 'file/0627/0627V8客户问题上报 - 分析.xlsx'
+EXCEL_FILE = 'file/0704/0704V8客户问题上报 - 分析.xlsx'
 
 # EXCEL_FILE = 'file/V3.15/V3.15V8客户问题上报-分析V2.xlsx'
 # EXCEL_FILE = 'file/V3.15/V3.15V8客户问题上报 (0426).xlsx'
+# EXCEL_FILE = 'file/V3.18/V3.18V8客户问题上报  (0622).xlsx'
 
 # EXCEL_FILE = 'file/V3.15/V3.15V8客户问题上报 (0430).xlsx'
-
-
-
+# EXCEL_FILE = 'file/V3.15/V3.15V8客户问题上报 (0511).xlsx'
+# EXCEL_FILE = 'file/V3.15/V3.15V8客户问题上报 (0518).xlsx'
+# EXCEL_FILE = 'file/V3.15/V3.15V8客户问题上报 (0525).xlsx'
+# EXCEL_FILE = 'file/V3.15/V3.15V8客户问题上报 (0531).xlsx'
+# EXCEL_FILE = 'file/V3.18/V3.18V8客户问题上报 (0629).xlsx'
+# EXCEL_FILE = 'file/V5.0/V5.0V8客户问题上报 (0629).xlsx'
 
 # 读取Excel文件
 df = pd.read_excel(EXCEL_FILE)
@@ -50,7 +59,7 @@ defect_by_group = df[
 # 4. 统计每个组的开发超期量
 overdue_by_group = df[
     df['开发是否超期'] == '是'
-]['开发处理-开发所属部门'].value_counts()
+].apply(lambda x: x['超期责任人所属部门'] if pd.notna(x['超期责任人所属部门']) else x['开发处理-开发所属部门'], axis=1).value_counts()
 
 # 5. 统计每个组的有效问题处理时长
 valid_issues = df[df['有效问题'] == '是']
