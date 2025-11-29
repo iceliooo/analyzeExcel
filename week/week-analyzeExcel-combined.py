@@ -26,7 +26,13 @@ def parse_args():
                       help='开始日期 (YYYY-MM-DD)')
     parser.add_argument('--end_date', type=str, default=end_date,
                       help='结束日期 (YYYY-MM-DD)') 
-    parser.add_argument('--excel_file', type=str, default='file/0711/0711V8客户问题上报 - 分析.xlsx',
+    # parser.add_argument('--excel_file', type=str, default='file/V5.0/V5.0V8客户问题上报 (1121).xlsx',
+    # parser.add_argument('--excel_file', type=str, default='file/V5.0.3/V5.0.3V8客户问题上报 (1121).xlsx',
+    # parser.add_argument('--excel_file', type=str, default='file/V5.0.5/V5.0.5V8客户问题上报 (1121).xlsx',
+    # parser.add_argument('--excel_file', type=str, default='file/V5.0.6/V5.0.6V8客户问题上报 (1121).xlsx',
+    parser.add_argument('--excel_file', type=str, default='file/V5.0.8/V5.0.8V8客户问题上报 (1121).xlsx',
+    # parser.add_argument('--excel_file', type=str, default='file/1114/1114V8客户问题上报 - 分析.xlsx',
+    # parser.add_argument('--excel_file', type=str, default='file/0930/0930V8客户问题上报 - 分析.xlsx',
                       help='Excel文件路径')
     return parser.parse_args()
 
@@ -393,6 +399,7 @@ def main():
             if sheet_name in wb.sheetnames:
                 wb.remove(wb[sheet_name])
         wb.save(EXCEL_FILE)
+        wb.close()
         
         # 写入新的分析结果
         with pd.ExcelWriter(EXCEL_FILE, mode='a', engine='openpyxl') as writer:

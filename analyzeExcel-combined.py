@@ -315,7 +315,15 @@ def main():
     """主函数"""
     # 设置Excel文件路径
     # 可以根据需要修改文件路径
-    EXCEL_FILE = 'file/V3.18/V3.18V8客户问题上报 (0713).xlsx'
+    # EXCEL_FILE = 'file/V5.0/V5.0V8客户问题上报 (1121).xlsx'
+    # EXCEL_FILE = 'file/V5.0.1/V5.0.1V8客户问题上报 (0824).xlsx'
+    # EXCEL_FILE = 'file/V5.0.3/V5.0.3V8客户问题上报 (1121).xlsx'
+    # EXCEL_FILE = 'file/V5.0.5/V5.0.5V8客户问题上报 (1121).xlsx'
+    # EXCEL_FILE = 'file/V5.0.6/V5.0.6V8客户问题上报 (1121).xlsx'
+    EXCEL_FILE = 'file/V5.0.8/V5.0.8V8客户问题上报 (1121).xlsx'
+    # EXCEL_FILE = 'file/1121/1121V8客户问题上报 - 分析.xlsx'
+    # EXCEL_FILE = 'file/0801/截至0731V8客户问题上报 - 分析.xlsx'
+
     
     print("Excel数据分析工具")
     print("=" * 50)
@@ -348,6 +356,7 @@ def main():
             if sheet_name in wb.sheetnames:
                 wb.remove(wb[sheet_name])
         wb.save(EXCEL_FILE)
+        wb.close()  # 显式关闭工作簿
         
         # 写入新的分析结果
         with pd.ExcelWriter(EXCEL_FILE, mode='a', engine='openpyxl') as writer:

@@ -146,6 +146,7 @@ if '分析结果' in wb.sheetnames:
     # 如果sheet已存在,删除旧sheet
     wb.remove(wb['分析结果'])
 wb.save(EXCEL_FILE)
+wb.close()
 
 with pd.ExcelWriter(EXCEL_FILE, mode='a', engine='openpyxl') as writer:
     summary_df.to_excel(writer, sheet_name='分析结果')

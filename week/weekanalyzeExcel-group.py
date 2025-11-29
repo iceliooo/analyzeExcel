@@ -171,6 +171,7 @@ def main():
         # 如果sheet已存在,删除旧sheet
         wb.remove(wb['周分析结果(按部门)'])
     wb.save(EXCEL_FILE)
+    wb.close()
 
     with pd.ExcelWriter(EXCEL_FILE, mode='a', engine='openpyxl') as writer:
         summary_df.to_excel(writer, sheet_name='周分析结果(按部门)')
